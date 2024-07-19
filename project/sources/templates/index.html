@@ -1,0 +1,13 @@
+{% extends "skeleton.html" %}
+
+{% block html_attrs %} class="h-100"{% endblock html_attrs %}
+{% block body_attrs %} class="d-flex h-100 text-center text-bg-dark"{% endblock body_attrs %}
+
+{% block base_content %}
+<div id="page-body" class="d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-center">
+    <div class="text-center">
+        <h1>{{ SITE.name }}</h1>
+        <p>{% trans %}Hello World!{% endtrans %}</p>
+        {% if page_lang.code not in ['fr_FR'] %}<p>There is also a <a href="index_fr_FR.html">French version</a></p>{% endif %}
+    </div>
+</div>{% endblock %}
