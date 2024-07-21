@@ -24,32 +24,24 @@ help:
 	@echo "  install             -- to install backend and frontend"
 	@echo
 	@echo "  clean-pycache       -- to remove all __pycache__, this is recursive from current directory"
-	@echo "  clean-builds        -- to remove everything builded by Optimus (pages, statics, etc..)"
+	@echo "  clean-html        -- to remove everything builded by Optimus (pages, statics, etc..)"
 	@echo "  clean-backend-install         -- to clean backend installation"
 	@echo "  clean-frontend-install        -- to clean frontend installation"
 	@echo "  clean-frontend-build          -- to clean frontend built files"
 	@echo "  clean               -- to clean local repository from all stuff created during development"
 	@echo
-	@echo "  build               -- to build project with default environnement"
-	@echo "  watch               -- to launch project watcher with default environnement"
-	@echo
-	@echo "  css                 -- to build CSS with default environnement"
-	@echo "  watch-css           -- to launch watcher CSS with default environnement"
-	@echo "  css-prod            -- to build CSS with production environnement"
-	@echo
-	@echo "  js                  -- to build distributed Javascript with default environnement"
-	@echo "  watch-js            -- to launch watcher for Javascript sources with default environnement"
-	@echo "  js-prod             -- to build distributed Javascript with production environnement"
+	@echo "  html                -- to build project with default environnement"
+	@echo "  watch-html          -- to launch project watcher with default environnement"
+	@echo "  html-prod           -- to build project with production environnement"
 	@echo
 	@echo "  frontend            -- to build frontend assets from sources (CSS and JS) with default environnement"
+	@echo "  watch-frontend      -- to launch watcher for Javascript sources with default environnement"
 	@echo "  frontend-prod       -- to build frontend assets from sources (CSS and JS) with production environnement"
 	@echo
 	@echo "  po                  -- to update PO catalogs from last sources changes in templates"
 	@echo "  mo                  -- to compile MO files from PO catalogs"
 	@echo
 	@echo "  server              -- to launch local server on $(SERVER_HOST) with default environnement"
-	@echo
-	@echo "  build-prod          -- to build project with production environnement"
 	@echo "  server-prod         -- to launch local server on $(SERVER_HOST) with production environnement"
 	@echo
 
@@ -61,7 +53,7 @@ clean-pycache:
 	find . -name "*\.pyc"|xargs rm -f
 .PHONY: clean-pycache
 
-clean-builds:
+clean-html:
 	@echo
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Clear builds <---$(FORMATRESET)\n"
 	@echo
@@ -69,7 +61,7 @@ clean-builds:
 	rm -Rf $(PROJECT_DIR)/.webassets-cache
 	rm -Rf $(PROJECT_DIR)/locale/**/*.mo
 	find locale -name "*\.mo"|xargs rm -f
-.PHONY: clean-builds
+.PHONY: clean-html
 
 clean-backend-install:
 	@echo ""
@@ -82,7 +74,7 @@ clean-frontend-build:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Cleaning frontend built files <---$(FORMATRESET)\n"
 	@echo ""
-	rm -Rf $(PROJECT_DIR)/sources/webpack-stats.json
+	rm -Rf $(PROJECT_DIR)/sources/frontend-assets.json
 	rm -Rf $(PROJECT_DIR)/sources/css
 	rm -Rf $(PROJECT_DIR)/sources/js
 .PHONY: clean-frontend-build
@@ -94,7 +86,7 @@ clean-frontend-install:
 	rm -Rf $(FRONTEND_DIR)/node_modules
 .PHONY: clean-frontend-install
 
-clean: clean-backend-install clean-frontend-build clean-frontend-install clean-builds clean-pycache
+clean: clean-backend-install clean-frontend-build clean-frontend-install clean-html clean-pycache
 .PHONY: clean
 
 venv:
@@ -116,72 +108,51 @@ install-frontend:
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Installing frontend requirements <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm install
-# 	${MAKE} icon-font
 .PHONY: install-frontend
 
 install: venv install-backend install-frontend
 .PHONY: install
 
-build:
+html:
 	@echo
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build for development environment <---$(FORMATRESET)\n"
 	@echo
 	$(OPTIMUS) build --basedir $(PROJECT_DIR) --settings-name $(SETTINGS_BASE)
-.PHONY: build
+.PHONY: html
 
-watch:
+html-prod:
+	@echo
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build for production environment <---$(FORMATRESET)\n"
+	@echo
+	$(OPTIMUS) build --basedir $(PROJECT_DIR) --settings-name $(SETTINGS_PROD)
+.PHONY: html-prod
+
+watch-html:
 	@echo
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Launch watcher for development environment <---$(FORMATRESET)\n"
 	@echo
 	$(OPTIMUS) watch --basedir $(PROJECT_DIR) --settings-name $(SETTINGS_BASE)
-.PHONY: watch
+.PHONY: watch-html
 
-css:
-	@echo
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building CSS for development environment <---$(FORMATRESET)\n"
-	@echo
-	cd $(FRONTEND_DIR) && npm run-script css
-.PHONY: css
-
-watch-sass:
-	@echo
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Watching Sass sources for development environment <---$(FORMATRESET)\n"
-	@echo
-	cd $(FRONTEND_DIR) && npm run-script watch-css
-.PHONY: watch-sass
-
-css-prod:
-	@echo
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building CSS for production environment <---$(FORMATRESET)\n"
-	@echo
-	cd $(FRONTEND_DIR) && npm run-script css-prod
-.PHONY: css-prod
-
-js:
+frontend:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed Javascript for development environment <---$(FORMATRESET)\n"
 	@echo ""
-	cd $(FRONTEND_DIR) && npm run js
-.PHONY: js
+	cd $(FRONTEND_DIR) && npm run build
+.PHONY: frontend
 
-watch-js:
+watch-frontend:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Watching Javascript sources for development environment <---$(FORMATRESET)\n"
 	@echo ""
-	cd $(FRONTEND_DIR) && npm run watch-js
-.PHONY: watch-js
+	cd $(FRONTEND_DIR) && npm run watch
+.PHONY: watch-frontend
 
-js-prod:
+frontend-prod:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed Javascript for production environment <---$(FORMATRESET)\n"
 	@echo ""
-	cd $(FRONTEND_DIR) && npm run js-prod
-.PHONY: js-prod
-
-frontend: css js
-.PHONY: frontend
-
-frontend-prod: css-prod js-prod
+	cd $(FRONTEND_DIR) && npm run build-prod
 .PHONY: frontend-prod
 
 po:
@@ -204,13 +175,6 @@ server:
 	@echo
 	$(OPTIMUS) runserver --basedir $(PROJECT_DIR) --settings-name $(SETTINGS_BASE) $(SERVER_HOST)
 .PHONY: server
-
-build-prod:
-	@echo
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build for production environment <---$(FORMATRESET)\n"
-	@echo
-	$(OPTIMUS) build --basedir $(PROJECT_DIR) --settings-name $(SETTINGS_PROD)
-.PHONY: build-prod
 
 server-prod:
 	@echo

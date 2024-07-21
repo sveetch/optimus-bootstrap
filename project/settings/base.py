@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Base settings file for development.
 """
@@ -53,6 +52,8 @@ BUNDLES = {
 FILES_TO_SYNC = (
     # Synchronize compiled CSS
     "css",
+    # Synchronize compiled Javascript
+    "js",
     # Synchronize images if any
     "images",
 )

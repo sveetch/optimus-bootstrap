@@ -1,6 +1,8 @@
-const path = require("path");
+const Path = require("path");
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleTracker = require('webpack-bundle-tracker');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
     // Disable production-specific optimizations by default
@@ -11,15 +13,17 @@ module.exports = {
     // Every source path are resolved from current directory
     context: __dirname,
 
-    // Entrypoint JS sources to build
+    // Entrypoint sources to build, every Javascript or Sass entrypoints have to be
+    // defined as its own entry
     entry: {
         main: "./js/main.js",
+        styling: "./scss/main.scss",
     },
 
     // Built JS files goes into project staticfile directory
     output: {
-        path: path.resolve("../project/sources/js"),
-        filename: "[name].js",
+        path: Path.resolve("../project/sources/js"),
+        filename: "[name].[contenthash:6].js",
         publicPath: "/static/js/",
         // Ensure previous bundle builds are cleaned and do not stack forever
         clean: true,
@@ -31,7 +35,7 @@ module.exports = {
             // Babel ES6 inspection watch for every JS sources changes
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                include: Path.resolve(__dirname, 'js'),
                 use: {
                     loader: "babel-loader",
                     options: {
@@ -39,14 +43,45 @@ module.exports = {
                     },
                 }
             },
+            // Rule to process Sass compilation through related loaders
+            {
+                test: /\.scss$/,
+                include: Path.resolve(__dirname, 'scss'),
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {},
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            // We do not want to resolve CSS url() relatively to the
+                            // frontend sources
+                            "url": false,
+                            // Enable source map (seems broken because of our CSS build
+                            // pipeline)
+                            "sourceMap": true,
+                        },
+                    },
+                    "sass-loader",
+                ]
+            }
         ]
     },
 
     // Enabled webpack plugins with their config
     plugins: [
+        // Create/update manifest of built entries
         new BundleTracker({
-            path: __dirname,
-            filename: '../project/sources/webpack-stats.json'
+            path: Path.join(__dirname, '../project/sources'),
+            filename: 'frontend-assets.json'
+        }),
+        // Remove empty script generated from Sass entries compilation
+        new RemoveEmptyScriptsPlugin(),
+        // Take in charge compiled CSS
+        new MiniCssExtractPlugin({
+            filename: Path.join("../css", "[name].[contenthash:6].css"),
+            chunkFilename: Path.join("../css", "[id].[contenthash:6].css"),
         }),
     ],
 };
