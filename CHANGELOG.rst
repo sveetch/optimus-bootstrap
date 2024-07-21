@@ -3,6 +3,21 @@
 Changelog
 =========
 
+Version 0.2.1 - 2024/07/21
+--------------------------
+
+Changed paths in webpack configuration to fix issues with remaining CSS builds, now
+this is not a flaw anymore.
+
+Also disabled random hash in build filename so Optimus assets manager can reach them
+since it currently use old webassets that is not aware of Webpack manifest. In future
+we would probably get ride of webassets in profit of an internal asset manager that
+would just parse the manifest.
+
+Note that there are currently lots of warning in CSS builds because of last Bootstrap
+and last Dart sass. This will be fixed once Bootstrap 5.3.4 is out.
+
+
 Version 0.2.0 - 2024/07/20
 --------------------------
 
@@ -16,7 +31,7 @@ building. We don't have to make such stuff as importing Sass sources from Javasc
 modules to build CSS and everything are going into the proper project static directory.
 
 
-Pros
+Cons
 ....
 
 This was a nice awaited configuration with many benefits, it have some
@@ -26,7 +41,7 @@ imperfections:
   different CSS build for the same entry is not removed after a new one is built so
   after numerous builds, they all accumulate in the target directory. This obviously
   won't happend if you don't use variable part like file hash, since the filename
-  target will always be the same.
+  target will always be the same. (Fixed in v0.2.1).
 * Webpack is slow to build Javascript and the watch pipeline is scanning both
   Javascript and Sass sources on every trigger, no matter it was for Javascript or
   Sass source. From Webpack configuration, there does not seems to be easy way to
@@ -36,7 +51,7 @@ The real flaw here is the build performance since the remaining build files coul
 easily cleaned from a Python script or even some Js code in webpack configuration.
 
 
-Cons
+Pros
 ....
 
 Now about the benefits:

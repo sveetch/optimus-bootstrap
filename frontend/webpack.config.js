@@ -17,14 +17,15 @@ module.exports = {
     // defined as its own entry
     entry: {
         main: "./js/main.js",
-        styling: "./scss/main.scss",
+        layout: "./scss/layout.scss",
     },
 
     // Built JS files goes into project staticfile directory
     output: {
-        path: Path.resolve("../project/sources/js"),
-        filename: "[name].[contenthash:6].js",
-        publicPath: "/static/js/",
+        path: Path.resolve("../project/sources/builds"),
+        // filename: "js/[name].[contenthash:6].js",
+        filename: "js/[name].js",
+        publicPath: "/static/builds/js/",
         // Ensure previous bundle builds are cleaned and do not stack forever
         clean: true,
     },
@@ -73,15 +74,17 @@ module.exports = {
     plugins: [
         // Create/update manifest of built entries
         new BundleTracker({
-            path: Path.join(__dirname, '../project/sources'),
+            path: Path.join(__dirname, '../project/sources/builds'),
             filename: 'frontend-assets.json'
         }),
         // Remove empty script generated from Sass entries compilation
         new RemoveEmptyScriptsPlugin(),
         // Take in charge compiled CSS
         new MiniCssExtractPlugin({
-            filename: Path.join("../css", "[name].[contenthash:6].css"),
-            chunkFilename: Path.join("../css", "[id].[contenthash:6].css"),
+            // filename: "css/[name].[contenthash:6].css",
+            // chunkFilename: "css/[id].[contenthash:6].css",
+            filename: "css/[name].css",
+            chunkFilename: "css/[id].css",
         }),
     ],
 };

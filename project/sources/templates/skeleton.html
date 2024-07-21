@@ -20,7 +20,7 @@
     {% endblock header_manifest %}
     {% block header_marketing %}{% endblock header_marketing %}
     {% block header_javascript %}{% endblock header_javascript %}
-    {% block header_resource %}{% assets "main_css" %}
+    {% block header_resource %}{% assets "layout_css" %}
         <link rel="stylesheet" href="{{ page_relative_position }}{{ ASSET_URL }}">
     {% endassets %}{% endblock header_resource %}
     {% block header_resource_extra %}{% endblock header_resource_extra %}

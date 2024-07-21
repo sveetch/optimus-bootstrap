@@ -39,3 +39,4 @@ coverage.xml
 .sass-cache
 _build
 .webassets-cache
+/project/sources/builds/

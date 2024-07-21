@@ -44,16 +44,16 @@ STATIC_URL = "static/"
 
 # Extra or custom bundles
 BUNDLES = {
-    "main_css": Bundle("css/main.css", filters=None, output="css/main.min.css"),
-    "main_js": Bundle("js/main.js", filters=None, output="js/main.min.js"),
+    "layout_css": Bundle("builds/css/layout.css", filters=None, output="builds/css/layout.min.css"),
+    "main_js": Bundle("builds/js/main.js", filters=None, output="builds/js/main.min.js"),
 }
 
 # Sources files or directory to synchronize within the static directory
 FILES_TO_SYNC = (
     # Synchronize compiled CSS
-    "css",
+    "builds/css",
     # Synchronize compiled Javascript
-    "js",
+    "builds/js",
     # Synchronize images if any
     "images",
 )
