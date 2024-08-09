@@ -1,8 +1,6 @@
 const Path = require("path");
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleTracker = require('webpack-bundle-tracker');
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
     // Disable production-specific optimizations by default
@@ -17,15 +15,14 @@ module.exports = {
     // defined as its own entry
     entry: {
         main: "./js/main.js",
-        layout: "./scss/layout.scss",
     },
 
     // Built JS files goes into project staticfile directory
     output: {
-        path: Path.resolve("../project/sources/builds"),
+        path: Path.resolve("../project/sources/js"),
         // filename: "js/[name].[contenthash:6].js",
         filename: "js/[name].js",
-        publicPath: "/static/builds/js/",
+        publicPath: "/static/js/",
         // Ensure previous bundle builds are cleaned and do not stack forever
         clean: true,
     },
@@ -44,29 +41,6 @@ module.exports = {
                     },
                 }
             },
-            // Rule to process Sass compilation through related loaders
-            {
-                test: /\.scss$/,
-                include: Path.resolve(__dirname, 'scss'),
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {},
-                    },
-                    {
-                        loader: "css-loader",
-                        options: {
-                            // We do not want to resolve CSS url() relatively to the
-                            // frontend sources
-                            "url": false,
-                            // Enable source map (seems broken because of our CSS build
-                            // pipeline)
-                            "sourceMap": true,
-                        },
-                    },
-                    "sass-loader",
-                ]
-            }
         ]
     },
 
@@ -75,16 +49,7 @@ module.exports = {
         // Create/update manifest of built entries
         new BundleTracker({
             path: Path.join(__dirname, '../project/sources/builds'),
-            filename: 'frontend-assets.json'
-        }),
-        // Remove empty script generated from Sass entries compilation
-        new RemoveEmptyScriptsPlugin(),
-        // Take in charge compiled CSS
-        new MiniCssExtractPlugin({
-            // filename: "css/[name].[contenthash:6].css",
-            // chunkFilename: "css/[id].[contenthash:6].css",
-            filename: "css/[name].css",
-            chunkFilename: "css/[id].css",
-        }),
+            filename: 'js-assets.json'
+        })
     ],
 };
