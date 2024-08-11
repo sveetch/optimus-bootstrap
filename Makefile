@@ -134,25 +134,48 @@ watch-html:
 	$(OPTIMUS) watch --basedir $(PROJECT_DIR) --settings-name $(SETTINGS_BASE)
 .PHONY: watch-html
 
-frontend:
+css:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed CSS for development environment <---$(FORMATRESET)\n"
+	@echo ""
+	cd $(FRONTEND_DIR) && npm run css
+.PHONY: css
+
+watch-css:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Watching Sass sources for development environment <---$(FORMATRESET)\n"
+	@echo ""
+	cd $(FRONTEND_DIR) && npm run watch-css
+.PHONY: watch-css
+
+js:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed Javascript for development environment <---$(FORMATRESET)\n"
 	@echo ""
-	cd $(FRONTEND_DIR) && npm run build
-.PHONY: frontend
+	cd $(FRONTEND_DIR) && npm run js
+.PHONY: js
 
-watch-frontend:
+watch-js:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Watching Javascript sources for development environment <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm run watch
-.PHONY: watch-frontend
+.PHONY: watch-js
+
+frontend:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building frontend for development environment <---$(FORMATRESET)\n"
+	@echo ""
+	cd $(FRONTEND_DIR) && npm run js
+	cd $(FRONTEND_DIR) && npm run css
+.PHONY: frontend
 
 frontend-prod:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed Javascript for production environment <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building frontend Javascript for production environment <---$(FORMATRESET)\n"
 	@echo ""
-	cd $(FRONTEND_DIR) && npm run build-prod
+	cd $(FRONTEND_DIR) && npm run js-prod
+	cd $(FRONTEND_DIR) && npm run css-prod
 .PHONY: frontend-prod
 
 po:

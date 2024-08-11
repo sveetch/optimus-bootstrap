@@ -3,6 +3,18 @@
 Changelog
 =========
 
+Version 0.3.0 - 2024/07/21
+--------------------------
+
+* Webpack is no longer used to manage Sass sources and CSS build since it slow down
+  CSS compilation with its scanning of JavaScript sources;
+* For now we move back to the sass npm package to build CSS from Sass sources. This
+  package is the pur JavaScript compilation result of Dart Sass, it is slower than
+  almost all other compiler, we will see further to turn to the real Dart Sass or
+  something else faster;
+* Sass sources have been cleaned;
+
+
 Version 0.2.1 - 2024/07/21
 --------------------------
 

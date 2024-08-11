@@ -2,7 +2,6 @@
 /// Main frontend layout styles
 ///
 /// - Sass sources adopt the ITCSS structure convention;
-/// - This includes Bootbutt library which is an addon around Bootstrap for some sugar;
 /// - Bootstrap variables and utilities structure require pre/post settings way to avoid
 ///   overriding too many variables when you just want to set a top level variable;
 ///
@@ -56,20 +55,21 @@
 
 // Utilities
 @import "bootstrap/scss/utilities/api";
+@import "./tools/flexbox";
 
 // Generic rules
-// @import "./generic/...";
+@import "./generic/html";
+@import "./generic/body";
 
 // Elements rules
 // @import "./elements/...";
-
-// Objects
-// @import "./objects/...";
 
 // Components
 @import "./components/header";
 @import "./components/footer";
 @import "./components/content";
+
+@import "settings/themes";
 
 // Trumps patchs
 // @import "./trumps/...";

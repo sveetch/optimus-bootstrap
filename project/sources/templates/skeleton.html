@@ -27,7 +27,7 @@
 </head>
 
 <body{% block body_attrs %}{% endblock body_attrs %}>
-    {% block base_content %}{% endblock base_content %}
+    {% block body_container %}{% endblock body_container %}
 
     {% block body_javascript %}{% assets "main_js" %}
         <script src="{{ page_relative_position }}{{ ASSET_URL }}"></script>

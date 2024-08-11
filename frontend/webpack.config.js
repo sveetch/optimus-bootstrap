@@ -21,7 +21,7 @@ module.exports = {
     output: {
         path: Path.resolve("../project/sources/js"),
         // filename: "js/[name].[contenthash:6].js",
-        filename: "js/[name].js",
+        filename: "[name].js",
         publicPath: "/static/js/",
         // Ensure previous bundle builds are cleaned and do not stack forever
         clean: true,
@@ -48,7 +48,7 @@ module.exports = {
     plugins: [
         // Create/update manifest of built entries
         new BundleTracker({
-            path: Path.join(__dirname, '../project/sources/builds'),
+            path: Path.join(__dirname, '../project/sources'),
             filename: 'js-assets.json'
         })
     ],

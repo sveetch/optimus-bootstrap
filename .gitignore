@@ -39,4 +39,7 @@ coverage.xml
 .sass-cache
 _build
 .webassets-cache
-/project/sources/builds/
+/project/sources/css/
+/project/sources/js/
+/project/sources/js-assets.json
+/frontend/package-lock.json

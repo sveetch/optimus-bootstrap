@@ -14,7 +14,7 @@ PROJECT_DIR = os.path.normpath(
 )
 
 # Common site name and domain to use available in templates
-SITE_NAME = "optimus_bootstrap"
+SITE_NAME = "Optimus Bootstrap5"
 SITE_DOMAIN = "localhost"
 
 # Sources directory where the assets will be searched
@@ -44,16 +44,12 @@ STATIC_URL = "static/"
 
 # Extra or custom bundles
 BUNDLES = {
-    "layout_css": Bundle("builds/css/layout.css", filters=None, output="builds/css/layout.min.css"),
-    "main_js": Bundle("builds/js/main.js", filters=None, output="builds/js/main.min.js"),
+    "layout_css": Bundle("css/layout.css", filters=None, output="css/layout.min.css"),
+    "main_js": Bundle("js/main.js", filters=None, output="js/main.min.js"),
 }
 
 # Sources files or directory to synchronize within the static directory
 FILES_TO_SYNC = (
-    # Synchronize compiled CSS
-    "builds/css",
-    # Synchronize compiled Javascript
-    "builds/js",
     # Synchronize images if any
     "images",
 )
