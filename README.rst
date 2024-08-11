@@ -7,6 +7,7 @@ This is an `Optimus`_ project to build a static page with Bootstrap5.
 
 Read the Optimus documentation on `<https://optimus.readthedocs.io/>`_.
 
+
 Install
 *******
 
@@ -16,6 +17,7 @@ virtualenv, pip and devel libraries to build possible Python libraries.
 Then after having cloned repository, run this command line: ::
 
     make install
+
 
 Usage
 *****
