@@ -17,6 +17,8 @@ PROJECT_DIR = os.path.normpath(
 SITE_NAME = "Optimus Bootstrap5"
 SITE_DOMAIN = "localhost"
 
+# Directory where the data files will be searched
+DATAS_DIR = os.path.join(PROJECT_DIR, "datas")
 # Sources directory where the assets will be searched
 SOURCES_DIR = os.path.join(PROJECT_DIR, "sources")
 # Templates directory

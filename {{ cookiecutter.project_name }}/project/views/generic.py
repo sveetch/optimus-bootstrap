@@ -1,8 +1,8 @@
-from optimus.pages.views.base import PageViewBase
+from optimus.pages.views import PageViewBase, PageTemplateView
 from optimus.conf.registry import settings  # noqa: F401
 
 
-class GenericPageView(PageViewBase):
+class GenericPageView(PageTemplateView):
     """
     Basic page view.
     """

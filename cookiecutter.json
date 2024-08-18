@@ -1,0 +1,25 @@
+{
+    "project_title": "Project name",
+    "project_name": "{{ cookiecutter.project_title.lower() | slugify }}",
+    "project_short_description": "An Optimus site project.",
+
+    "init_git_repository": true,
+
+    "app_name": "{{ cookiecutter.project_name.lower() | replace(' ', '_') | slugify | replace('-', '_') }}",
+
+    "version": "0.1.0",
+
+    "_optimus_bootstrap_version": "0.4.0-pre.1",
+
+    "__prompts__": {
+        "project_title": "Input your verbose project name",
+        "project_name": "Customize your project directory name if needed",
+        "project_short_description": "Give a short description for this project",
+
+        "init_git_repository": "Do you want to init a GIT repository with an initial commit?",
+
+        "app_name": "Customize your application module name if needed",
+
+        "version": "Project will starts in version"
+    }
+}
