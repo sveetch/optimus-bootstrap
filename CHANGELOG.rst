@@ -52,7 +52,7 @@ modules to build CSS and everything are going into the proper project static dir
 Cons
 ....
 
-This was a nice awaited configuration with many benefits, it have some
+This was a nice awaited configuration with many benefits, however it have some
 imperfections:
 
 * The Webpack global option ``output.clean`` is not respected for CSS files and each

@@ -1,11 +1,14 @@
-.. _Optimus: https://github.com/sveetch/Optimus
+.. _Optimus: https://optimus.readthedocs.io/
+.. _Bootstrap frontend toolkit: https://getbootstrap.com/
 
-Optimus Bootstrap5
-==================
+{{ '=' * cookiecutter.project_title|length }}
+{{ cookiecutter.project_title }}
+{{ '=' * cookiecutter.project_title|length }}
 
-This is an `Optimus`_ project to build a static page with Bootstrap5.
+{{ cookiecutter.project_short_description|wordwrap(80) }}
 
-Read the Optimus documentation on `<https://optimus.readthedocs.io/>`_.
+This is an `Optimus`_ project to build a static page with
+`Bootstrap frontend toolkit`_.
 
 
 Install

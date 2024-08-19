@@ -1,15 +1,17 @@
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _Optimus: https://optimus.readthedocs.io/
 .. _Python: https://www.python.org
 .. _virtualenv: https://virtualenv.pypa.io
 .. _pip: https://pip.pypa.io
 .. _Flake8: http://flake8.readthedocs.org
+.. _Bootstrap frontend toolkit: https://getbootstrap.com/
 
 
 ==========================
 Optimus Bootstrap template
 ==========================
 
-A `Cookiecutter`_ template to produce an Optimus site project.
+A `Cookiecutter`_ template to produce an `Optimus`_ site project.
 
 A sample built from this template is available on repository
 `sveetch-optimus-sample <https://github.com/sveetch/sveetch-optimus-sample>`_.
@@ -20,7 +22,9 @@ Features
 
 Once created a project will have everything to start:
 
-* Modern frontend with Bootstrap5, Node.js and Webpack;
+* Optimus site project well configured;
+* Modern frontend with a Node.js environment, `Bootstrap frontend toolkit`_ and Webpack;
+* A Makefile with every useful tasks to operate your project;
 * Development in a Python virtual environment with `virtualenv`_ and `pip`_;
 * Optional GIT repository initialization;
 * `Flake8`_ configuration for quality review;
@@ -81,11 +85,11 @@ Bash alias
 Once installed you can also create shortcut with a bash alias in
 your ``.bash_aliases``: ::
 
-    alias cookpy='/home/foo/optimus-bootstrap/.venv/bin/cookiecutter /home/foo/optimus-bootstrap'
+    alias cookoptimus='/home/foo/optimus-bootstrap/.venv/bin/cookiecutter /home/foo/optimus-bootstrap'
 
 So you will just have to execute following command to create a new project: ::
 
-    cookpy
+    cookoptimus
 
 
 Options
@@ -100,14 +104,3 @@ You can pre define some options in your
 `cookiecutter user configuration <https://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html>`_
 to avoid some inputs. This is especially recommended for options related to author that
 you should probably always use the same.
-
-
-Naming
-******
-
-For a given ``Sample bar`` project name:
-
-* Package name will be ``sample-bar``;
-* Application name will ``sample_bar``;
-
-You can change package and application names during project creation.

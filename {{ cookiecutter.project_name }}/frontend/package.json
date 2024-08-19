@@ -1,8 +1,8 @@
 {
-    "name": "optimus-bootstrap-frontend",
-    "version": "0.3.0",
-    "description": "The project frontend stack.",
-    "author": "David THENON <sveetch@gmail.com>",
+    "name": "{{ cookiecutter.project_name }}",
+    "version": "{{ cookiecutter.version }}",
+    "description": "{{ cookiecutter.project_name }} frontend stack.",
+    "author": "Your full name <your_email>",
     "private": true,
     "scripts": {
         "js": "webpack --mode development --progress",

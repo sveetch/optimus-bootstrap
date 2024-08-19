@@ -14,7 +14,7 @@ PROJECT_DIR = os.path.normpath(
 )
 
 # Common site name and domain to use available in templates
-SITE_NAME = "Optimus Bootstrap5"
+SITE_NAME = "{{ cookiecutter.project_title }}"
 SITE_DOMAIN = "localhost"
 
 # Directory where the data files will be searched
@@ -35,10 +35,10 @@ LOCALES_DIR = os.path.join(PROJECT_DIR, "locale")
 PAGES_MAP = "views"
 
 # Locale name for default language to use for Pages
-LANGUAGE_CODE = "en_US"
+LANGUAGE_CODE = "en"
 
 # A list of locale name for all available languages to manage with PO files
-LANGUAGES = (LANGUAGE_CODE, "fr_FR")
+LANGUAGES = (LANGUAGE_CODE, "fr")
 
 # The static url to use in templates and with webassets
 # This can be a full URL like http://, a relative path or an absolute path
