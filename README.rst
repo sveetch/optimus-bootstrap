@@ -16,7 +16,7 @@ Optimus Bootstrap template
 A `Cookiecutter`_ template to produce an `Optimus`_ site project.
 
 A sample built from this template is available on repository
-`sveetch-optimus-sample <https://github.com/sveetch/sveetch-optimus-sample>`_.
+`sveetch-optimus-sample <https://sveetch.github.io/sveetch-optimus-sample>`_.
 
 
 Features

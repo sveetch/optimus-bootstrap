@@ -3,7 +3,7 @@
 Changelog
 =========
 
-Version 0.4.0 - Unreleased
+Version 0.4.0 - 2024/08/20
 --------------------------
 
 * Restructured this project to be a proper Cookiecutter template;

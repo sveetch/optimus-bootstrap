@@ -6,6 +6,7 @@ PIP_BIN=$(VENV_PATH)/bin/pip
 FLAKE_BIN=$(VENV_PATH)/bin/flake8
 PYTEST_BIN=$(VENV_PATH)/bin/pytest
 COOKIECUTTER_BIN=$(VENV_PATH)/bin/cookiecutter
+TOX_BIN=$(VENV_PATH)/bin/tox
 
 # Formatting variables, FORMATRESET is always to be used last to close formatting
 FORMATBLUE:=$(shell tput setab 4)
@@ -18,26 +19,27 @@ help:
 	@echo "  Cleaning"
 	@echo "  ========"
 	@echo
-	@echo "  clean               -- to clean EVERYTHING (Warning)"
-	@echo "  clean-pycache       -- to remove all __pycache__, this is recursive from current directory"
-	@echo "  clean-install       -- to clean Python side installation"
-	@echo "  clean-dist          -- to remove distributed directory"
+	@echo "  clean                        -- to clean EVERYTHING (Warning)"
+	@echo "  clean-pycache                -- to remove all __pycache__, this is recursive from current directory"
+	@echo "  clean-install                -- to clean Python side installation"
+	@echo "  clean-dist                   -- to remove distributed directory"
 	@echo
 	@echo "  Installation"
 	@echo "  ============"
 	@echo
-	@echo "  install             -- to install this project with virtualenv and Pip"
+	@echo "  install                      -- to install this project with virtualenv and Pip"
 	@echo
 	@echo "  Usage"
 	@echo "  ====="
 	@echo
-	@echo "  project              -- to create a new project"
+	@echo "  project                       -- to create a new project"
 	@echo
 	@echo "  Quality"
 	@echo "  ======="
 	@echo
-	@echo "  flake8               -- to check codestyle on cookie internals"
-	@echo "  template-flake8      -- to check codestyle on project template (it is expected to fail because of Jinja syntax in some files)"
+	@echo "  flake8                        -- to check codestyle on cookie internals"
+	@echo "  template-flake8               -- to check codestyle on project template (it is expected to fail because of Jinja syntax in some files)"
+	@echo "  tox                           -- to use Tox to create, install and test the cookiecutter with different options"
 	@echo
 
 clean-pycache:
@@ -100,5 +102,12 @@ template-flake8:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking codestyle on project template <---$(FORMATRESET)\n"
 	@echo ""
-	@$(FLAKE_BIN) --statistics --show-source \{\{\cookiecutter.project_name\}\}
+	@$(FLAKE_BIN) --statistics --show-source '{{ cookiecutter.project_name }}'
 .PHONY: template-flake8
+
+tox:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Create, install and test project with Tox environments <---$(FORMATRESET)\n"
+	@echo ""
+	$(TOX_BIN) run
+.PHONY: tox
