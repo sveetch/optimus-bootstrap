@@ -7,6 +7,9 @@ Version 0.4.0 - Unreleased
 --------------------------
 
 * Restructured this project to be a proper Cookiecutter template;
+* Cleaned templates and Sass sources;
+* Added everything for a working *Color mode toggler for Bootstrap*;
+* Added Cookiecutter post hook to initialize Git repository;
 
 
 Version 0.3.0 - 2024/07/21

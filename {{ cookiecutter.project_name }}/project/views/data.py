@@ -4,30 +4,30 @@ from pathlib import Path
 from optimus.pages.views import PageViewBase
 
 
-class PureDataView(PageViewBase):
+class DataView(PageViewBase):
     """
-    Sample of PageViewBase usage to build a page without template and also for view
-    datas.
+    Sample of PageViewBase usage to build a JSON ressource without template view.
     """
 
-    title = "Nope"
-    # Default destination include the language code
-    destination = "pure-data.json"
+    title = "Not used"
+    destination = "endpoint.json"
     datas = ["sample.json"]
 
     def render(self, env):
         """
-        Build a JSON using some data from a view datas
+        Build a JSON using some data from a view data.
 
         Arguments:
             env (jinja2.Jinja2Environment): Jinja environment.
 
         Returns:
-            string: HTML builded from page template with its context.
+            string: Page content to write in destination file.
         """
         super().render(env)
 
         sample_path = Path(self.settings.DATAS_DIR) / "sample.json"
         sample = json.loads(sample_path.read_text())
 
-        return "\n\n".join(sample["items"])
+        return json.dumps({
+            "sample.json": "\n\n".join(sample["items"]),
+        }, indent=4)

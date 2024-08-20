@@ -1,10 +1,12 @@
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _Optimus: https://optimus.readthedocs.io/
 .. _Python: https://www.python.org
 .. _virtualenv: https://virtualenv.pypa.io
 .. _pip: https://pip.pypa.io
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _Optimus: https://optimus.readthedocs.io/
 .. _Flake8: http://flake8.readthedocs.org
 .. _Bootstrap frontend toolkit: https://getbootstrap.com/
+.. _Webpack: https://webpack.js.org/
+.. _Node.js: https://nodejs.org
 
 
 ==========================
@@ -23,11 +25,23 @@ Features
 Once created a project will have everything to start:
 
 * Optimus site project well configured;
-* Modern frontend with a Node.js environment, `Bootstrap frontend toolkit`_ and Webpack;
+* Modern frontend with a `Node.js`_ environment, `Bootstrap frontend toolkit`_
+  and `Webpack`_;
 * A Makefile with every useful tasks to operate your project;
-* Development in a Python virtual environment with `virtualenv`_ and `pip`_;
+* Development in a `Python`_ virtual environment with `virtualenv`_ and `pip`_;
 * Optional GIT repository initialization;
 * `Flake8`_ configuration for quality review;
+
+
+Prerequisite
+************
+
+* `Python`_>=3.8;
+* `virtualenv`_;
+* `pip`_;
+* `Cookiecutter`_;
+* `Node.js`_>=18;
+* GNU make (or any Makefile tool compatible);
 
 
 Usage
@@ -104,3 +118,46 @@ You can pre define some options in your
 `cookiecutter user configuration <https://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html>`_
 to avoid some inputs. This is especially recommended for options related to author that
 you should probably always use the same.
+
+
+Structure
+---------
+
+Once created a project will have this directory structure: ::
+
+    YourProject/
+    ├── frontend/
+    │   ├── js/
+    │   │   └── components/
+    │   └── scss/
+    │       ├── components/
+    │       ├── elements/
+    │       ├── generic/
+    │       ├── objects/
+    │       ├── settings/
+    │       ├── tools/
+    │       └── trumps/
+    └── project/
+        ├── datas/
+        ├── locale/
+        │   ├── en/
+        │   │   └── LC_MESSAGES/
+        │   └── fr/
+        │       └── LC_MESSAGES/
+        ├── settings/
+        ├── sources/
+        │   ├── images/
+        │   └── templates/
+        │       └── partials/
+        └── views/
+
+This structure sample does not show included Python, JavaScript, Sass files.
+
+frontend/
+    The frontend sources are located in a distinct directory than site project
+    directory since the latter is managed through Optimus and the first is managed
+    with a Node.js environment. However the frontend is configured to build assets
+    into the project sources so it can embed it in site ressources.
+
+project/
+    This is the directory which holds everything about site project.

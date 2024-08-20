@@ -1,13 +1,12 @@
-from optimus.pages.views import PageViewBase, PageTemplateView
-from optimus.conf.registry import settings  # noqa: F401
+from gettext import gettext as _
+
+from optimus.pages.views import PageTemplateView
 
 
 class GenericPageView(PageTemplateView):
     """
     Basic page view.
     """
-
-    title = "Generic basic page"
+    title = _("Generic basic page")
     template_name = "generic.html"
-    # Default destination include the language code
-    destination = "index_{language_code}.html"
+    destination = "{language_code}/index.html"
