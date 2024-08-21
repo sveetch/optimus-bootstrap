@@ -3,6 +3,7 @@
 {% block header_title %}{{ super() }} - {{ page_title }}{% endblock header_title %}
 
 {% block body_container %}
+{% include "partials/mark.html" %}
 {% include "partials/color_mode_toggler.html" %}
 
 <div id="page-body" class="d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-center">
