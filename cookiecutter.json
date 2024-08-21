@@ -9,7 +9,7 @@
 
     "version": "0.1.0",
 
-    "_optimus_bootstrap_version": "0.4.1-pre1",
+    "_optimus_bootstrap_version": "0.4.1-pre2",
 
     "__prompts__": {
         "project_title": "Input your verbose project name",

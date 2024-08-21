@@ -11,11 +11,20 @@ DEBUG = True
 SITE_NAME = "{{ cookiecutter.project_title }}"
 SITE_DOMAIN = "localhost"
 
-# Base project directory path is computed from current file
-PROJECT_DIR = os.path.normpath(
+# Repository root path is computed from current settings file
+REPOSITORY_DIR = os.path.normpath(
     os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
         "..",
+        "..",
+    )
+)
+
+# Base site project path
+PROJECT_DIR = os.path.normpath(
+    os.path.join(
+        REPOSITORY_DIR,
+        "project",
     )
 )
 
@@ -26,7 +35,7 @@ SOURCES_DIR = os.path.join(PROJECT_DIR, "sources")
 # Templates directory
 TEMPLATES_DIR = os.path.join(SOURCES_DIR, "templates")
 # Directory where all stuff will be builded
-PUBLISH_DIR = os.path.join(PROJECT_DIR, "_build", "dev")
+PUBLISH_DIR = os.path.join(REPOSITORY_DIR, "dist", "dev")
 # Path where will be moved all the static files, usually this is a directory in
 # the ``PUBLISH_DIR``
 STATIC_DIR = os.path.join(PUBLISH_DIR, "static")

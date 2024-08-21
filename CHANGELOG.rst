@@ -3,11 +3,14 @@
 Changelog
 =========
 
-Version 0.4.1 - 2024/08/20
+Version 0.4.1 - Unreleased
 --------------------------
 
-* Fixed settings ``STATIC_DIR``;
+* Fixed setting ``STATIC_DIR``;
 * Fixed Makefile task ``clean-frontend-build``;
+* Added setting ``REPOSITORY_DIR`` for repository root path;
+* Changed setting ``PROJECT_DIR`` to be computed from setting ``REPOSITORY_DIR``;
+* Changed setting ``PUBLISH_DIR`` to build into ``dist/`` in repository root;
 
 
 Version 0.4.0 - 2024/08/20

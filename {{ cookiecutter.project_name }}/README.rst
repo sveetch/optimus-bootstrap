@@ -41,13 +41,18 @@ Once installed you can build everything: ::
 
     make frontend mo html
 
-And finally you can then serve the static build: ::
+This will build the development version in directory in ``dist/dev/``.
+
+Finally you can then serve the static build: ::
 
     make server
 
 Or push it anywhere on a web server since it is only a static site.
 
-See the Makefile help for details about available tasks: ::
+Going further
+*************
+
+See the Makefile help for details about available helpful tasks: ::
 
     make help
 
