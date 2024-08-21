@@ -3,7 +3,7 @@
 Changelog
 =========
 
-Version 0.4.1 - Unreleased
+Version 0.4.1 - 2024/08/20
 --------------------------
 
 * Fixed setting ``STATIC_DIR``;
