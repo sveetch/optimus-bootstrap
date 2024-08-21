@@ -3,6 +3,13 @@
 Changelog
 =========
 
+Version 0.4.1 - 2024/08/20
+--------------------------
+
+* Fixed settings ``STATIC_DIR``;
+* Fixed Makefile task ``clean-frontend-build``;
+
+
 Version 0.4.0 - 2024/08/20
 --------------------------
 

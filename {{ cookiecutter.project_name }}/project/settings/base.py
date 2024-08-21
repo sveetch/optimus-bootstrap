@@ -29,7 +29,7 @@ TEMPLATES_DIR = os.path.join(SOURCES_DIR, "templates")
 PUBLISH_DIR = os.path.join(PROJECT_DIR, "_build", "dev")
 # Path where will be moved all the static files, usually this is a directory in
 # the ``PUBLISH_DIR``
-STATIC_DIR = os.path.join(PROJECT_DIR, PUBLISH_DIR, "static")
+STATIC_DIR = os.path.join(PUBLISH_DIR, "static")
 # Path to the i18n messages catalog directory
 LOCALES_DIR = os.path.join(PROJECT_DIR, "locale")
 

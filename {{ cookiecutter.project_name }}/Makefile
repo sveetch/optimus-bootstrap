@@ -74,7 +74,7 @@ clean-frontend-build:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Cleaning frontend built files <---$(FORMATRESET)\n"
 	@echo ""
-	rm -Rf $(PROJECT_DIR)/sources/frontend-assets.json
+	rm -Rf $(PROJECT_DIR)/sources/js-assets.json
 	rm -Rf $(PROJECT_DIR)/sources/css
 	rm -Rf $(PROJECT_DIR)/sources/js
 .PHONY: clean-frontend-build
