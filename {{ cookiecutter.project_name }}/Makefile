@@ -57,10 +57,9 @@ clean-html:
 	@echo
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Clear builds <---$(FORMATRESET)\n"
 	@echo
-	rm -Rf $(PROJECT_DIR)/_build
+	rm -Rf dist
 	rm -Rf $(PROJECT_DIR)/.webassets-cache
 	rm -Rf $(PROJECT_DIR)/locale/**/*.mo
-	find locale -name "*\.mo"|xargs rm -f
 .PHONY: clean-html
 
 clean-backend-install:
